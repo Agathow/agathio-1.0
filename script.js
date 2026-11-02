@@ -1,4 +1,3 @@
-
 /* ===== EDIT YOUR CONTENT HERE ===== */
 const LINKS={email:'mailto:fideliobagasprakoso@gmail.com',linkedin:'https://www.linkedin.com/in/fidelio-bagas-prakoso/',github:'https://github.com/your-username',instagram:'https://instagram.com/fideliobagas'};
 const NAV=['Home','About','Expertise','Experience','Projects','Achievements','Contact'];
