@@ -114,7 +114,82 @@ dt{font-size:.72rem;color:var(--a);font-weight:700;letter-spacing:.08em;text-tra
 
 .tag{display:inline-flex;align-items:center;gap:.35rem}.tag .material-symbols-outlined{font-size:15px;font-variation-settings:'FILL' 1}
 
+/* Experience Photo Gallery */
+#experience .role-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    border: 1px solid var(--bd);
+    border-radius: 12px;
+}
 
+#experience .role-gallery img {
+    display: block;
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 0;
+    cursor: zoom-in;
+    transition: transform .3s ease;
+}
+
+#experience .role-gallery img:hover {
+    transform: scale(1.04);
+}
+
+@media (max-width: 600px) {
+    #experience .role-gallery {
+        max-width: 340px;
+    }
+
+    #experience .role-gallery img {
+        height: 90px;
+    }
+}
+
+
+.photo-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .92);
+    backdrop-filter: blur(8px);
+    cursor: zoom-out;
+}
+
+.photo-lightbox.active {
+    display: flex;
+}
+
+.photo-lightbox img {
+    max-width: 95vw;
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.photo-lightbox .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
 
 
 /* ABOUT — editorial profile, currently list, and clickable trait-card deck */
@@ -323,5 +398,127 @@ dt{font-size:.72rem;color:var(--a);font-weight:700;letter-spacing:.08em;text-tra
   .role-gallery img{
     width:calc(50% - .35rem);
     min-width:0;
+  }
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVE — EXPERIENCE TABS
+===================================== */
+
+@media (max-width: 600px) {
+
+  /* Experience tab container */
+  #experience .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 2rem;
+
+    border-radius: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Individual tab buttons */
+  #experience .tabs button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+
+    padding: 10px 8px;
+    border-radius: 13px;
+
+    font-size: 0.82rem;
+    line-height: 1.4;
+    font-weight: 600;
+    text-align: center;
+    white-space: normal;
+  }
+
+  /* Volunteering occupies the full second row */
+  #experience .tabs button:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  /* Active tab */
+  #experience .tabs button.on {
+    background: var(--p);
+    color: #fff;
+  }
+
+  /* Experience heading */
+  #experience .sh h2 {
+    font-size: clamp(2.1rem, 8vw, 2.8rem);
+    line-height: 1.12;
+  }
+
+  /* Timeline spacing */
+  #experience .timeline {
+    padding-left: 1.25rem;
+    gap: 1.8rem;
+  }
+
+  #experience .timeline > .company-item > .dot {
+    left: calc(-1.25rem - 7px);
+  }
+
+  /* Company header */
+  #experience .company-header {
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  #experience .company-logo {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  #experience .company-title h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  #experience .company-title p {
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  /* Role content */
+  #experience .company-roles {
+    margin-left: 0.4rem;
+    padding-left: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  #experience .company-role .role-dot {
+    left: calc(-1.2rem - 7px);
+  }
+
+  #experience .role-heading h4 {
+    font-size: 0.95rem;
+  }
+
+  #experience .role-period {
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+
+  #experience .company-role > p {
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  /* Activity photos */
+  #experience .role-gallery img {
+    width: calc(50% - 0.35rem);
+    min-width: 0;
   }
 }

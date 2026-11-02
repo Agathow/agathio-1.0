@@ -1,3 +1,4 @@
+
 /* ===== EDIT YOUR CONTENT HERE ===== */
 const LINKS={email:'mailto:fideliobagasprakoso@gmail.com',linkedin:'https://www.linkedin.com/in/fidelio-bagas-prakoso/',github:'https://github.com/your-username',instagram:'https://instagram.com/fideliobagas'};
 const NAV=['Home','About','Expertise','Experience','Projects','Achievements','Contact'];
@@ -9,7 +10,7 @@ const EXPERIENCE={'Experience':[{org:'BINUS University',logo:'images/logo/logo-b
 ]}],
 'Education':[
     {org:'BINUS University',logo:'images/logo/logo-binus.png', role:"Bachelor's Degree in Information Systems",period:'Sep 2024 – Jul 2028',start:'2024-09',active:true},
-    {org:'SMA Mardi Yuana Depok',logo:'images/logo/mardi-yuana.jpeg',role:'Social Sciences',period:'Jun 2021 – Jun 2024'}
+    {org:'SMA Mardi Yuana Depok',logo:'images/logo/mardi-yuana.jpeg',role:'Social Sciences',period:'Jun 2021 – Jun 2024', end:'2024-06'}
     ],
 'Volunteering & Organization':[
  {org:'Komsos Santo Paulus Depok',logo:'images/logo/logo-komsos.png',category:'Religious Organization',period:'Mar 2023 – Present',roles:[
@@ -289,7 +290,7 @@ const ACHIEVEMENTS = [
         title: 'Silver Medal — IT FEST UMK 2026',
         issuer: 'Web Development',
         year: '2026',
-        text: 'lorem ipsum',
+        text: 'Awarded Silver Medal for developing SIGAP, a public service transparency platform.',
         icon: 'Counter_2'
     },
     {
@@ -317,7 +318,7 @@ const ACHIEVEMENTS = [
 
 
 const CERTIFICATES=[
- {title:'Silver Medal - IT FEST UMK 2026',issuer:'IT FEST 2026 · Universitas Muria Kudus',year:'2026',image:'images/certificates/comingsoon it fest.png '},
+ {title:'Silver Medal - IT FEST UMK 2026',issuer:'IT FEST 2026 · Universitas Muria Kudus',year:'2026',image:'images/certificates/sigapweb.png '},
  {title:'Gold Medal - Data Slayer 3.0',issuer:'Data Slayer 3.0 · Telkom University Purwokerto',year:'2025',image:'images/certificates/indeep.png'},
  {title:'The Best User Experience — UI/UX Competition',issuer:'IEEE Indonesia Section · Universitas Brawijaya',year:'2025',image:'images/certificates/thebestuxieee25.jpg'},
  {title:'Certificate of Achievement — SASC Mentoring',issuer:'BINUS University',year:'2026',image:'images/certificates/mentor period 1.jpeg'},
@@ -511,3 +512,57 @@ if(traitDeck){
 // scroll reveal (after all content is rendered)
 const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target)}}),{rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.rv').forEach(el=>rio.observe(el));
+
+
+/* ===== EXPERIENCE PHOTO LIGHTBOX ===== */
+
+// Create lightbox
+const experienceLightbox = document.createElement('div');
+
+experienceLightbox.id = 'experienceLightbox';
+experienceLightbox.className = 'photo-lightbox';
+
+experienceLightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Close image">
+        &times;
+    </button>
+    <img src="" alt="Experience documentation">
+`;
+
+document.body.appendChild(experienceLightbox);
+
+const experienceLightboxImg = experienceLightbox.querySelector('img');
+
+// Open image when clicked
+document.addEventListener('click', function (e) {
+    const photo = e.target.closest('#experience .role-gallery img');
+
+    if (photo) {
+        experienceLightboxImg.src = photo.src;
+        experienceLightboxImg.alt = photo.alt;
+        experienceLightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close when clicking outside or close button
+    if (
+        e.target === experienceLightbox ||
+        e.target.closest('#experienceLightbox .lightbox-close')
+    ) {
+        experienceLightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        experienceLightboxImg.src = '';
+    }
+});
+
+// Close using Escape key
+document.addEventListener('keydown', function (e) {
+    if (
+        e.key === 'Escape' &&
+        experienceLightbox.classList.contains('active')
+    ) {
+        experienceLightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        experienceLightboxImg.src = '';
+    }
+});
